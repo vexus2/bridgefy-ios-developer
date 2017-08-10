@@ -1,7 +1,10 @@
 # Bridgefy Transmitter
 Bridgefy Transmitter is a library that allows the client to transmit data to nearby peers without the necessity of an Internet connection or an access point. It also implements a mesh-network transmission algorithm that enables devices to send data to peers that are so far away that they aren't visible to the client device.
 
-**Note for Github users:**  
+ **<span style="color:red">IMPORTANT NOTE</span>**
+This repository doesn't containt the full version of the framework, in order to run the example projects, please go the [distribution repository][BRIDGEFY_DIST] to get the last official version of `BFTransmitter.framework` and replace the local copy. 
+
+If you want to use the framework in your own projects, you will need to get the full version, too. If you decide to use CocoaPods to install the framework, you will already have the official version, so you can
 If you found this without first having gone through the Bridgefy website, you probably don't have access to the framework repository, so the sample projects won't work. More information about the Bridgefy framework is available [here][BRIDGEFY_WEB]. If you already have access, just copy the file `BFTransmitter.framework` to the root directory of this repository.
 
 ---
@@ -46,7 +49,7 @@ $ pod install
 
 ## Manual setup
 
-Download the file `BFTransmitter.framework`, open your project and drag the file and drop it in the "Embedded Binaries" section of your project as shown in the following picture:  
+Download the official version of `BFTransmitter.framework` [here][BRIDGEFY_DIST], open your project and drag the file and drop it in the "Embedded Binaries" section of your project as shown in the following picture:  
 ![Framework file](img/addframework.png)  
 Select the option "Copy items if needed" and you will be able to use the framework.
 
@@ -671,4 +674,5 @@ If the app is closed and the BFTransmitter instance is not stopped before, `save
 
 [ADD_KEY]: https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html
 [BRIDGEFY_WEB]: https://bridgefy.me/download-bridgefy.php
+[BRIDGEFY_DIST]: https://bitbucket.org/bridgefy/bridgefy-ios-dist/
 [BRIDGING_HEADER]: https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
