@@ -2,10 +2,7 @@
 Bridgefy Transmitter is a library that allows the client to transmit data to nearby peers without the necessity of an Internet connection or an access point. It also implements a mesh-network transmission algorithm that enables devices to send data to peers that are so far away that they aren't visible to the client device.
 
  **IMPORTANT NOTE!**  
-This repository doesn't containt the full version of the framework, in order to run the example projects, please go the [distribution repository][BRIDGEFY_DIST] to get the last official version of `BFTransmitter.framework` and replace the local copy. 
-
-If you want to use the framework in your own projects, you will need to get the full version, too. If you decide to use CocoaPods to install the framework, you will already have the official version, so you can
-If you found this without first having gone through the Bridgefy website, you probably don't have access to the framework repository, so the sample projects won't work. More information about the Bridgefy framework is available [here][BRIDGEFY_WEB]. If you already have access, just copy the file `BFTransmitter.framework` to the root directory of this repository.
+This repository doesn't containt the official version of the framework, in order to run the example projects, please go the [distribution repository][BRIDGEFY_DIST] to get the last official version of `BFTransmitter.framework` and replace the local copy. You will also need to have an API key for every project you run, go to the [Bridgefy website][BRIDGEFY_WEB] to know how to obtain it.
 
 ---
 
