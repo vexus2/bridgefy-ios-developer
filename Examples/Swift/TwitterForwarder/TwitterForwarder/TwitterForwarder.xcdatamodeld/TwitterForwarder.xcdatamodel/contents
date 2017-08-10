@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Tweet" representedClassName="Tweet" syncable="YES" codeGenerationType="class">
+        <attribute name="messageId" attributeType="String" syncable="YES"/>
+        <attribute name="own" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rawStatus" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <attribute name="time" attributeType="Date" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="userId" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Tweet" positionX="-63" positionY="-18" width="128" height="135"/>
+    </elements>
+</model>

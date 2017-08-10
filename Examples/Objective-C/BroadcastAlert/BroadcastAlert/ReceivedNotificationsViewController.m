@@ -1,0 +1,118 @@
+//
+//  ReceivedNotificationsViewController.m
+//  BroadcastAlert
+//
+//  Created by Daniel Heredia on 7/27/16.
+//  Copyright © 2017 Bridgefy Inc. All rights reserved.
+//
+
+#import "Notification.h"
+#import "ReceivedNotificationsViewController.h"
+
+#ifndef ReceivedNotifs
+#define ReceivedNotifs
+#define FULLPATH(X) [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] \
+    stringByAppendingPathComponent:(X)]
+#define kNotificationsFile @"notifs.txt"
+#endif
+
+@interface ReceivedNotificationsViewController ()
+@property (nonatomic, retain) NSArray* notifications;
+@end
+
+@implementation ReceivedNotificationsViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    //Load previous notifications
+    self.notifications = [self.class loadNotifications];
+}
+
+- (void)addNotificationDictionary:(NSDictionary*)dictionary fromUUID:(NSString*)uuid
+{
+    //Process the data sent by other peer.
+    [self.class addNotificationToFile:dictionary
+                             fromUUID:uuid];
+    [self refreshData];
+}
+
+- (void)refreshData
+{
+    self.notifications = [self.class loadNotifications];
+    [self.tableView reloadData];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.notifications count];
+}
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"notificationCell" forIndexPath:indexPath];
+    Notification* notification = [self.notifications objectAtIndex:indexPath.item];
+    UILabel* numberLabel = [(UILabel*)cell.contentView viewWithTag:1001];
+    UILabel* fromLabel = [(UILabel*)cell.contentView viewWithTag:1002];
+    UILabel* dateLabel = [(UILabel*)cell.contentView viewWithTag:1003];
+
+    numberLabel.text = [NSString stringWithFormat:@"Alert number: %ld", (long)notification.number];
+    fromLabel.text = [NSString stringWithFormat:@"From user: %@ (%@)", notification.senderName, notification.senderId];
+
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    NSString* dateString = [dateFormatter stringFromDate:notification.date];
+    dateLabel.text = [NSString stringWithFormat:@"Time: %@", dateString];
+
+    return cell;
+}
+
+#pragma mark - Clumsy data management
+
+// The methods in this section are not relevant to show
+// the BFTransmitter functionality.
+
++ (void)addNotificationToFile:(NSDictionary*)dictionary fromUUID:(NSString*)uuid
+{
+    Notification* notification = [[Notification alloc] init];
+    notification.number = [dictionary[@"number"] integerValue];
+    notification.senderId = [uuid substringToIndex:5];
+    notification.senderName = dictionary[@"device_name"];
+    double doubleDate = [dictionary[@"date_sent"] doubleValue] / 1000;
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:doubleDate];
+    notification.date = date;
+
+    NSMutableArray* notifications = [self loadNotifications];
+    [notifications insertObject:notification
+                        atIndex:0];
+
+    NSString* filePath = FULLPATH(kNotificationsFile);
+    NSData* data = [NSKeyedArchiver archivedDataWithRootObject:notifications];
+    [data writeToFile:filePath atomically:YES];
+}
+
++ (NSMutableArray*)loadNotifications
+{
+    NSString* filePath = FULLPATH(kNotificationsFile);
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    NSMutableArray* notifications;
+    
+    if (data) {
+        notifications = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+
+    if (notifications == nil)
+        notifications = [[NSMutableArray alloc] init];
+
+    return notifications;
+}
+
+@end
