@@ -68,3 +68,6 @@ fastlane/test_output
 
 # MacOS files
 *.DS_Store
+
+# Framework
+BFTransmitter.framework/
