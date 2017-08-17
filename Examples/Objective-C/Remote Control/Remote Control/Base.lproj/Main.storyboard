@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sE3-FF-bBX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sE3-FF-bBX">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +25,7 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6IE-SI-o4c">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOV-BC-n61">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOV-BC-n61">
                                 <rect key="frame" x="16" y="274.5" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -258,50 +258,56 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVF-8F-PEM">
-                                <rect key="frame" x="115" y="226" width="88" height="22"/>
-                                <state key="normal" title="  Image 1" image="radioButtonOff">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsw-u4-grl">
+                                <rect key="frame" x="117" y="202" width="43" height="22"/>
+                                <state key="normal" title=" Ad" image="radioButtonOff">
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="imageButtonPressed:" destination="19c-ys-qkg" eventType="touchUpInside" id="GIY-QI-bWn"/>
+                                    <action selector="imageButtonPressed:" destination="19c-ys-qkg" eventType="touchUpInside" id="NSN-9Q-IGB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QM1-Cl-CVQ">
-                                <rect key="frame" x="115" y="320" width="91" height="22"/>
-                                <state key="normal" title="  Image 3" image="radioButtonOff">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Hs-rA-bdA">
+                                <rect key="frame" x="117" y="296" width="56" height="22"/>
+                                <state key="normal" title=" Map" image="radioButtonOff">
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="imageButtonPressed:" destination="19c-ys-qkg" eventType="touchUpInside" id="jZT-C7-KPr"/>
+                                    <action selector="imageButtonPressed:" destination="19c-ys-qkg" eventType="touchUpInside" id="hwN-Gf-Whc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsP-lV-5Cx">
-                                <rect key="frame" x="115" y="273" width="90" height="22"/>
-                                <state key="normal" title="  Image 2" image="radioButtonOff">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0J-NB-Cxa">
+                                <rect key="frame" x="117" y="249" width="75" height="22"/>
+                                <state key="normal" title=" Sports" image="radioButtonOff">
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="imageButtonPressed:" destination="19c-ys-qkg" eventType="touchUpInside" id="VLM-z6-2A3"/>
+                                    <action selector="imageButtonPressed:" destination="19c-ys-qkg" eventType="touchUpInside" id="BXj-E7-rcs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfM-2P-4ip">
+                                <rect key="frame" x="117" y="345" width="86" height="22"/>
+                                <state key="normal" title=" Concert" image="radioButtonOff">
+                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="imageButtonPressed:" destination="19c-ys-qkg" eventType="touchUpInside" id="ejK-FL-2F5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QM1-Cl-CVQ" firstAttribute="top" secondItem="AsP-lV-5Cx" secondAttribute="bottom" constant="25" id="7hK-uw-zYd"/>
-                            <constraint firstItem="WVF-8F-PEM" firstAttribute="leading" secondItem="AsP-lV-5Cx" secondAttribute="leading" id="MUe-Fc-zUS"/>
-                            <constraint firstItem="AsP-lV-5Cx" firstAttribute="centerY" secondItem="6Ey-px-98n" secondAttribute="centerY" id="OXK-C4-iHO"/>
-                            <constraint firstItem="QM1-Cl-CVQ" firstAttribute="leading" secondItem="AsP-lV-5Cx" secondAttribute="leading" id="P2F-Au-Uu2"/>
-                            <constraint firstItem="AsP-lV-5Cx" firstAttribute="centerX" secondItem="6Ey-px-98n" secondAttribute="centerX" id="aEQ-9z-uOf"/>
-                            <constraint firstItem="AsP-lV-5Cx" firstAttribute="top" secondItem="WVF-8F-PEM" secondAttribute="bottom" constant="25" id="hho-xU-Iw3"/>
+                            <constraint firstItem="OfM-2P-4ip" firstAttribute="top" secondItem="3Hs-rA-bdA" secondAttribute="bottom" constant="26.5" id="EJ7-aX-i8W"/>
+                            <constraint firstItem="H0J-NB-Cxa" firstAttribute="centerY" secondItem="6Ey-px-98n" secondAttribute="centerY" constant="-24" id="GvN-bk-9SV"/>
+                            <constraint firstItem="3Hs-rA-bdA" firstAttribute="top" secondItem="H0J-NB-Cxa" secondAttribute="bottom" constant="25" id="Jfr-Tt-O6R"/>
+                            <constraint firstItem="3Hs-rA-bdA" firstAttribute="leading" secondItem="H0J-NB-Cxa" secondAttribute="leading" id="Kox-7v-DQr"/>
+                            <constraint firstItem="H0J-NB-Cxa" firstAttribute="top" secondItem="Dsw-u4-grl" secondAttribute="bottom" constant="25" id="Nga-kU-an0"/>
+                            <constraint firstItem="Dsw-u4-grl" firstAttribute="leading" secondItem="H0J-NB-Cxa" secondAttribute="leading" id="Q8c-hz-8eZ"/>
+                            <constraint firstItem="H0J-NB-Cxa" firstAttribute="centerX" secondItem="6Ey-px-98n" secondAttribute="centerX" constant="-5.5" id="k9U-iZ-jrX"/>
+                            <constraint firstItem="OfM-2P-4ip" firstAttribute="leading" secondItem="3Hs-rA-bdA" secondAttribute="leading" id="wkO-a0-pHC"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Image" image="tabBarImage" id="ve8-gL-sso"/>
-                    <connections>
-                        <outlet property="image1Button" destination="WVF-8F-PEM" id="lY7-Ic-YTc"/>
-                        <outlet property="image2Button" destination="AsP-lV-5Cx" id="PuX-SL-0l4"/>
-                        <outlet property="image3Button" destination="QM1-Cl-CVQ" id="vRe-Sd-wLO"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4Z-mu-OJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

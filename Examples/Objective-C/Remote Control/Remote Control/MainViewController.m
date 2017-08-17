@@ -30,7 +30,9 @@ typedef NS_ENUM(NSUInteger, Command) {
     CommandText
 };
 
-@interface MainViewController () <BFTransmitterDelegate>
+@interface MainViewController () <BFTransmitterDelegate> {
+    NSArray *images;
+}
 
 @property (nonatomic, retain) BFTransmitter *transmitter;
 
@@ -44,11 +46,12 @@ typedef NS_ENUM(NSUInteger, Command) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    images = @[@"ad", @"sports", @"map", @"concert"];
+    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:nil
                                                                             action:nil];
-    self.messageLabel.text = @"Long press to become admin. \n\n If you don't want to become an admin just wait.";
     
     //Transmitter initialization
     [BFTransmitter setLogLevel:BFLogLevelError];
@@ -230,10 +233,13 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
 
 - (void)showImageFromDictionary:(NSDictionary *)dict {
     int imageIndex = [[dict valueForKey:kImageKey] intValue];
-    NSString *imageName = [NSString stringWithFormat:@"back%i", imageIndex];
+    
+    if (imageIndex > images.count) {
+        return;
+    }
     
     [self resetView];
-    self.imageView.image = [UIImage imageNamed:imageName];
+    self.imageView.image = [UIImage imageNamed:images[imageIndex]];
     self.imageView.hidden = NO;
     
 }

@@ -11,9 +11,7 @@
 
 @interface ImagePickerViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *image1Button;
-@property (weak, nonatomic) IBOutlet UIButton *image2Button;
-@property (weak, nonatomic) IBOutlet UIButton *image3Button;
+@property (nonatomic, retain) UIButton *currentButton;
 
 @end
 
@@ -32,11 +30,13 @@
 - (IBAction)imageButtonPressed:(id)sender {
     UIButton *selectedButton = (UIButton *)sender;
     
-    [self.image1Button setImage:[UIImage imageNamed:@"radioButtonOff"] forState:UIControlStateNormal];
-    [self.image2Button setImage:[UIImage imageNamed:@"radioButtonOff"] forState:UIControlStateNormal];
-    [self.image3Button setImage:[UIImage imageNamed:@"radioButtonOff"] forState:UIControlStateNormal];
+    [self.currentButton setImage:[UIImage imageNamed:@"radioButtonOff"]
+                        forState:UIControlStateNormal];
     
-    [selectedButton setImage:[UIImage imageNamed:@"radioButtonOn"] forState:UIControlStateNormal];
+    [selectedButton setImage:[UIImage imageNamed:@"radioButtonOn"]
+                    forState:UIControlStateNormal];
+    
+    self.currentButton = selectedButton;
     
     if (self.tabBarController) {
         AdminViewTabBarController *tabBarController = (AdminViewTabBarController *)self.tabBarController;

@@ -10,10 +10,8 @@ import UIKit
 
 class ImagePickerViewController: UIViewController {
     
-    @IBOutlet weak var image1Button: UIButton!
-    @IBOutlet weak var image2Button: UIButton!
-    @IBOutlet weak var image3Button: UIButton!
-
+    var currentButton: UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,11 +26,9 @@ class ImagePickerViewController: UIViewController {
     @IBAction func imageButtonPressed(_ sender: Any) {
         let selectedButton = sender as! UIButton
         
-        self.image1Button.setImage(#imageLiteral(resourceName: "radioButtonOff"), for: .normal)
-        self.image2Button.setImage(#imageLiteral(resourceName: "radioButtonOff"), for: .normal)
-        self.image3Button.setImage(#imageLiteral(resourceName: "radioButtonOff"), for: .normal)
-        
+        self.currentButton?.setImage(#imageLiteral(resourceName: "radioButtonOff"), for: .normal)
         selectedButton.setImage(#imageLiteral(resourceName: "radioButtonOn"), for: .normal)
+        self.currentButton = selectedButton
         
         if (self.tabBarController != nil) {
             let tabBarController = self.tabBarController as! AdminViewTabBarController

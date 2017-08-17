@@ -26,6 +26,7 @@ enum Comand : Int {
 
 class MainViewController: UIViewController, BFTransmitterDelegate {
     
+    let images = ["ad", "sports", "map", "concert"]
     var transmitter: BFTransmitter?
     
     @IBOutlet weak var imageView: UIImageView!
@@ -35,7 +36,7 @@ class MainViewController: UIViewController, BFTransmitterDelegate {
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil);
-        self.messageLabel.text = "Long press to become admin. \n\n If you don't want to become an admin just wait."
+        
         // Transmitter initialization
         BFTransmitter.setLogLevel(.error)
         self.transmitter = BFTransmitter(apiKey: "YOUR API KEY")
@@ -218,10 +219,13 @@ class MainViewController: UIViewController, BFTransmitterDelegate {
     
     func showImage(from dictionary: [String: Any]) {
         let imageIndex = dictionary[kImageKey] as! Int
-        let imageName = "back\(imageIndex)"
+        
+        if imageIndex > self.images.count {
+            return
+        }
         
         self.resetView()
-        self.imageView.image = UIImage(named: imageName)
+        self.imageView.image = UIImage(named: self.images[imageIndex])
         self.imageView.isHidden = false
     }
     
