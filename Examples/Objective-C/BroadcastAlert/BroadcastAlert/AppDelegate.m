@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UITabBar appearance] setTintColor:APP_RED_COLOR];
+    [[UINavigationBar appearance] setTintColor:APP_RED_COLOR];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObject:APP_RED_COLOR
+                                                                                     forKey:NSForegroundColorAttributeName]];
+    
+    [[UITabBar appearance] setTintColor:APP_RED_COLOR];
+    
+    [[UIButton appearance] setTintColor:APP_RED_COLOR];
+    
+    // Default settings
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if (![defaults stringForKey:USERNAME]) {
+        [defaults setObject:[[UIDevice currentDevice] name]
+                     forKey:USERNAME];
+        [defaults setBool:YES
+                   forKey:VIBRATION_ENABLED];
+        
+        [defaults synchronize];
+    }
+    
     return YES;
 }
 

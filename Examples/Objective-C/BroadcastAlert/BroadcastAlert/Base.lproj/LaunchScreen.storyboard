@@ -1,27 +1,63 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V7W-F2-9oo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <scene sceneID="qio-Se-hMz">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="V7W-F2-9oo" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="i1j-JB-Lj0"/>
+                        <viewControllerLayoutGuide type="bottom" id="ePZ-OP-wrL"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="Tfe-6k-iyL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GradientBackground" translatesAutoresizingMaskIntoConstraints="NO" id="0zF-U2-gCa">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Broadcast Alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Il-Hy-afx">
+                                <rect key="frame" x="87" y="317.5" width="201" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bridgefy Inc. 2017. All Rights Reserved." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iba-Lo-bgs">
+                                <rect key="frame" x="61.5" y="630" width="252" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ePZ-OP-wrL" firstAttribute="top" secondItem="Iba-Lo-bgs" secondAttribute="bottom" constant="20" id="1uc-P5-4S5"/>
+                            <constraint firstItem="8Il-Hy-afx" firstAttribute="centerX" secondItem="Tfe-6k-iyL" secondAttribute="centerX" id="9Mf-OS-6Xf"/>
+                            <constraint firstItem="0zF-U2-gCa" firstAttribute="leading" secondItem="Tfe-6k-iyL" secondAttribute="leading" id="TmW-PP-kdl"/>
+                            <constraint firstItem="ePZ-OP-wrL" firstAttribute="top" secondItem="0zF-U2-gCa" secondAttribute="bottom" id="ZEC-E6-okR"/>
+                            <constraint firstItem="8Il-Hy-afx" firstAttribute="centerY" secondItem="Tfe-6k-iyL" secondAttribute="centerY" id="cQd-B7-7ag"/>
+                            <constraint firstItem="Iba-Lo-bgs" firstAttribute="centerX" secondItem="Tfe-6k-iyL" secondAttribute="centerX" id="dnB-B6-Doc"/>
+                            <constraint firstItem="0zF-U2-gCa" firstAttribute="centerX" secondItem="Tfe-6k-iyL" secondAttribute="centerX" id="eKN-hU-ktX"/>
+                            <constraint firstItem="0zF-U2-gCa" firstAttribute="centerY" secondItem="Tfe-6k-iyL" secondAttribute="centerY" id="lbL-nc-x4S"/>
+                            <constraint firstAttribute="trailing" secondItem="0zF-U2-gCa" secondAttribute="trailing" id="wZc-ak-HFR"/>
+                            <constraint firstItem="0zF-U2-gCa" firstAttribute="top" secondItem="Tfe-6k-iyL" secondAttribute="top" id="xle-gv-aJ8"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yEs-U3-F1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="570" y="402"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="GradientBackground" width="1" height="1920"/>
+    </resources>
 </document>

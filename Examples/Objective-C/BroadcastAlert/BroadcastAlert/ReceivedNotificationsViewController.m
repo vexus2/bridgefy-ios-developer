@@ -8,6 +8,7 @@
 
 #import "Notification.h"
 #import "ReceivedNotificationsViewController.h"
+#import "Constants.h"
 
 #ifndef ReceivedNotifs
 #define ReceivedNotifs
@@ -28,6 +29,9 @@
 
     //Load previous notifications
     self.notifications = [self.class loadNotifications];
+    
+    // Prevents a shadow on the nav bar when pushed
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)addNotificationDictionary:(NSDictionary*)dictionary fromUUID:(NSString*)uuid
@@ -60,17 +64,24 @@
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"notificationCell" forIndexPath:indexPath];
     Notification* notification = [self.notifications objectAtIndex:indexPath.item];
-    UILabel* numberLabel = [(UILabel*)cell.contentView viewWithTag:1001];
-    UILabel* fromLabel = [(UILabel*)cell.contentView viewWithTag:1002];
-    UILabel* dateLabel = [(UILabel*)cell.contentView viewWithTag:1003];
-
-    numberLabel.text = [NSString stringWithFormat:@"Alert number: %ld", (long)notification.number];
-    fromLabel.text = [NSString stringWithFormat:@"From user: %@ (%@)", notification.senderName, notification.senderId];
-
+    UILabel *fromUsernameLabel = [(UILabel *)cell.contentView viewWithTag:1001];
+    UILabel *fromUUIDLabel = [(UILabel *)cell.contentView viewWithTag:1002];
+    UILabel *alertNumberLabel = [(UILabel *)cell.contentView viewWithTag:1003];
+    UILabel *dateLabel = [(UILabel *)cell.contentView viewWithTag:1004];
+    UILabel *timeLabel = [(UILabel *)cell.contentView viewWithTag:1005];
+    
+    fromUsernameLabel.text = notification.senderName;
+    fromUUIDLabel.text = [NSString stringWithFormat:@"(%@)", notification.senderId];
+    alertNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)notification.number];
+    
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
     NSString* dateString = [dateFormatter stringFromDate:notification.date];
-    dateLabel.text = [NSString stringWithFormat:@"Time: %@", dateString];
+    dateLabel.text = dateString;
+    
+    [dateFormatter setDateFormat:@"HH:mm:ss"];
+    NSString *timeString = [dateFormatter stringFromDate:notification.date];
+    timeLabel.text = timeString;
 
     return cell;
 }
@@ -113,6 +124,13 @@
         notifications = [[NSMutableArray alloc] init];
 
     return notifications;
+}
+
++ (BOOL)clearReceivedNotifications {
+    
+    NSString* filePath = FULLPATH(kNotificationsFile);
+    NSData* data = [NSKeyedArchiver archivedDataWithRootObject:[[NSMutableArray alloc] init]];
+    return [data writeToFile:filePath atomically:YES];
 }
 
 @end

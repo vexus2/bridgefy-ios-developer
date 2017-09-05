@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E8249261F59FA43008FFFB4 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8249251F59FA43008FFFB4 /* SettingsTableViewController.m */; };
 		511E828E1D499DCF006B1230 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 511E828D1D499DCF006B1230 /* main.m */; };
 		511E82911D499DCF006B1230 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 511E82901D499DCF006B1230 /* AppDelegate.m */; };
 		511E82971D499DCF006B1230 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 511E82951D499DCF006B1230 /* Main.storyboard */; };
@@ -34,6 +35,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3E8249231F59F4D3008FFFB4 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		3E8249241F59FA43008FFFB4 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		3E8249251F59FA43008FFFB4 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		511E82891D499DCF006B1230 /* BroadcastAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BroadcastAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		511E828D1D499DCF006B1230 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		511E828F1D499DCF006B1230 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -95,6 +99,9 @@
 				511E82981D499DCF006B1230 /* Assets.xcassets */,
 				511E829A1D499DCF006B1230 /* LaunchScreen.storyboard */,
 				511E829D1D499DCF006B1230 /* Info.plist */,
+				3E8249231F59F4D3008FFFB4 /* Constants.h */,
+				3E8249241F59FA43008FFFB4 /* SettingsTableViewController.h */,
+				3E8249251F59FA43008FFFB4 /* SettingsTableViewController.m */,
 				511E828C1D499DCF006B1230 /* Supporting Files */,
 			);
 			path = BroadcastAlert;
@@ -181,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E8249261F59FA43008FFFB4 /* SettingsTableViewController.m in Sources */,
 				511E82B01D49A15E006B1230 /* Notification.m in Sources */,
 				511E82911D499DCF006B1230 /* AppDelegate.m in Sources */,
 				511E828E1D499DCF006B1230 /* main.m in Sources */,

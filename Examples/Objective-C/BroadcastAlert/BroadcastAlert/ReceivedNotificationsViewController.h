@@ -12,5 +12,6 @@
 
 - (void)addNotificationDictionary:(NSDictionary*)dictionary fromUUID:(NSString*)uuid;
 + (void)addNotificationToFile:(NSDictionary*)dictionary fromUUID:(NSString*)uuid;
++ (BOOL)clearReceivedNotifications;
 
 @end

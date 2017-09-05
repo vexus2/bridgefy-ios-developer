@@ -10,6 +10,8 @@
 #import "ReceivedNotificationsViewController.h"
 #import <BFTransmitter/BFTransmitter.h>
 #import <QuartzCore/QuartzCore.h>
+#import "Constants.h"
+#import <AudioToolbox/AudioServices.h>
 
 #ifndef SEND_NOTIF
 #define SEND_NOTIF
@@ -22,6 +24,7 @@
 {
     NSInteger sentNumber;
     NSInteger receivedNumber;
+    BOOL shouldVibrate;
 }
 @property (nonatomic, retain) BFTransmitter * transmitter;
 @property (nonatomic, weak) ReceivedNotificationsViewController * receivedNotifsController;
@@ -42,23 +45,31 @@
     //UI controls load
     sentNumber = [self getSentNotificationsNumber];
     receivedNumber = [self getReceivedNotificationsNumber];
-    self.nameLabel.text = [NSString stringWithFormat:@"Device name: %@", [[UIDevice currentDevice] name]];
-    self.uuidLabel.text = [NSString stringWithFormat:@"User ID: %@", [self truncatedUUID]];
+    self.nameLabel.text = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:USERNAME]];
+    self.uuidLabel.text = [NSString stringWithFormat:@"%@", [self truncatedUUID]];
     [self refreshCounters];
     self.sentStatusLabel.text = @"";
     
     self.sendButton.layer.cornerRadius = 14.0;
     self.sendButton.layer.borderWidth = 2.0;
     self.sendButton.layer.borderColor = [UIColor redColor].CGColor;
-    self.controlsContainer.layer.cornerRadius = 14.0;
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:nil
+                                                                            action:nil];
+    
+    shouldVibrate = [[NSUserDefaults standardUserDefaults] boolForKey:VIBRATION_ENABLED];
+    
+    [self registerForNotifications];
 }
 
 -(void)refreshCounters
 {
     self.sentNotificationsLabel.text =
-    [NSString stringWithFormat:@"Sent alerts: %ld", (long)sentNumber];
+    [NSString stringWithFormat:@"%ld", (long)sentNumber];
     self.receivedNotificationsLabel.text =
-    [NSString stringWithFormat:@"Received alerts: %ld", (long)receivedNumber];
+    [NSString stringWithFormat:@"%ld", (long)receivedNumber];
 }
 
 -(NSString *)truncatedUUID
@@ -66,6 +77,27 @@
     return [self.transmitter.currentUser substringToIndex:5];
 }
 
+- (void)registerForNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(vibrationSettingChanged:)
+                                                 name:VIBRATION_NOTIFICATION
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(usernameWasUpdated:)
+                                                 name:USERNAME_NOTIFICATION
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(resetSentAlertsCounter:)
+                                                 name:RESET_SENT_ALERTS_NOTIFICATION
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deleteReceivedAlerts:)
+                                                 name:DELETE_RECEIVED_ALERTS_NOTIFICATION
+                                               object:nil];
+}
 
 #pragma mark - Navigation
 
@@ -89,7 +121,7 @@
                                BFSendingOptionMeshTransmission);
     NSDictionary * dictionary = @{@"number": @(sentNumber + 1),
                                   @"date_sent": @(floor([[NSDate date] timeIntervalSince1970] * 1000)),
-                                  @"device_name": [[UIDevice currentDevice] name]
+                                  @"device_name": [[NSUserDefaults standardUserDefaults] stringForKey:USERNAME]
                                   };
     [self.transmitter sendDictionary:dictionary
                               toUser:nil
@@ -110,7 +142,7 @@
     // Just called when the option BFSendingOptionMeshTransmission was used
     sentNumber++;
     self.sentStatusLabel.text = [NSString stringWithFormat:
-                                 @"Alert number %ld is being broadcasted!",
+                                 @"Broadcasting alert number %ld",
                                  (long)sentNumber];
     [self updateSentNotifications:sentNumber];
     [self refreshCounters];
@@ -157,6 +189,11 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
 {
     receivedNumber++;
     [self updateReceivedNotifications:receivedNumber];
+    
+    if (shouldVibrate) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    }
+    
     [self refreshCounters];
     // A dictionary was received by BFTransmitter.
     if (self.receivedNotifsController)
@@ -192,6 +229,16 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
 - (void)transmitter:(BFTransmitter *)transmitter didOccurEvent:(BFEvent)event description:(NSString *)description
 {
     NSLog(@"Event reported: %@", description);
+    
+    if (event == BFEventStartFinished) {
+        NSUserDefaults *usrDefaults = [NSUserDefaults standardUserDefaults];
+        if (![usrDefaults boolForKey:INFO_SHOWED]) {
+            [self infoPressed:nil];
+            [usrDefaults setBool:YES
+                          forKey:INFO_SHOWED];
+            [usrDefaults synchronize];
+        }
+    }
 }
 
 - (BOOL)transmitter:(BFTransmitter *)transmitter shouldConnectSecurelyWithUser:(NSString *)user
@@ -231,5 +278,52 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
     if (value == nil)
         return 0;
     return [value integerValue];
+}
+
+#pragma mark - Info method
+
+- (IBAction)infoPressed:(id)sender {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Broadcast Alert"
+                                                                             message:@"This app is designed to send and receive alerts without an internet connection."
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:nil];
+    
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController
+                       animated:YES
+                     completion:nil];
+}
+
+#pragma mark - Notification handlers
+
+- (void)vibrationSettingChanged:(NSNotification *)notification {
+    shouldVibrate = [[NSUserDefaults standardUserDefaults] boolForKey:VIBRATION_ENABLED];
+}
+
+- (void)usernameWasUpdated:(NSNotification *)notification {
+    self.nameLabel.text = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:USERNAME]];
+}
+
+- (void)resetSentAlertsCounter:(NSNotification *)notification {
+    sentNumber = 0;
+    [self updateSentNotifications:sentNumber];
+    [self refreshCounters];
+    self.sentStatusLabel.text = @"";
+}
+
+- (void)deleteReceivedAlerts:(NSNotification *)notification {
+    if ([ReceivedNotificationsViewController clearReceivedNotifications]) {
+        receivedNumber = 0;
+        [self updateReceivedNotifications:receivedNumber];
+        [self refreshCounters];
+    }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end
