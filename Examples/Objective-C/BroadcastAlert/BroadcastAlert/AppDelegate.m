@@ -19,7 +19,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[UITabBar appearance] setTintColor:APP_RED_COLOR];
     [[UINavigationBar appearance] setTintColor:APP_RED_COLOR];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObject:APP_RED_COLOR
                                                                                      forKey:NSForegroundColorAttributeName]];

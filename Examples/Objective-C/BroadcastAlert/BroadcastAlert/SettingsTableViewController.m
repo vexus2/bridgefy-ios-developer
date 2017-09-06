@@ -97,8 +97,8 @@
 }
 
 - (void)showResetSentCounterAlert {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@""
-                                                                             message:@"Reset sent alerts counter?"
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Reset sent alerts counter?"
+                                                                             message:nil
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
@@ -107,12 +107,12 @@
         [self clearTableSelection];
     }];
     
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self clearTableSelection];
     }];
     
     [alertController addAction:yesAction];
-    [alertController addAction:noAction];
+    [alertController addAction:cancelAction];
     
     [self presentViewController:alertController
                        animated:yesAction
@@ -121,8 +121,8 @@
 
 
 - (void)showDeleteReceivedAlerts {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@""
-                                                                             message:@"Delete all received notifications?"
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete all received notifications?"
+                                                                             message:nil
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
@@ -131,12 +131,12 @@
         [self clearTableSelection];
     }];
     
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self clearTableSelection];
     }];
     
     [alertController addAction:yesAction];
-    [alertController addAction:noAction];
+    [alertController addAction:cancelAction];
     
     [self presentViewController:alertController
                        animated:yesAction
