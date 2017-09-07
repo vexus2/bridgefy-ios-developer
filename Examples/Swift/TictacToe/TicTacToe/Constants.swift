@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct StoryboardSegues {
     static let setName = "setName"
@@ -43,5 +44,7 @@ enum MatchState: Int {
     case wonX = 1
     case wonO = 2
     case tie = -1
-    
 }
+
+let APP_RED_COLOR = #colorLiteral(red: 0.9647058824, green: 0.3098039216, blue: 0.3098039216, alpha: 1)
+let DISABLE_COLOR = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)

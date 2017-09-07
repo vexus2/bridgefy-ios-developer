@@ -31,6 +31,8 @@ class MatchViewController: UIViewController, TTTBoardViewDataSource, TTTBoardVie
     @IBOutlet weak var buttonsContainer: UIView!
     @IBOutlet weak var player1Container: UIView!
     @IBOutlet weak var player2Container: UIView!
+    @IBOutlet weak var logoImageView: UIImageView!
+    
     
     @IBOutlet var portraitContraints: [NSLayoutConstraint]!
     var landscapeContraints: [NSLayoutConstraint] = []
@@ -85,7 +87,8 @@ class MatchViewController: UIViewController, TTTBoardViewDataSource, TTTBoardVie
             
             let views = ["scores": scoresContainer,
                          "board": boardView,
-                         "buttons": buttonsContainer] as! [String: UIView]
+                         "buttons": buttonsContainer,
+                         "logo": logoImageView] as! [String: UIView]
             
             // Creating scores container contraints
             self.landscapeContraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[scores]",

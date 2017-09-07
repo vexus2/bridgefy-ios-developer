@@ -11,17 +11,30 @@ import UIKit
 class MatchesTableViewController: UITableViewController, SpectatorDelegate {
 
     var gameManager: GameManager!
+    var noPlayersView: UIView?
     weak var showingmatchController: MatchViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         gameManager = (self.tabBarController as! TicTacToeTabBarController).gameManager
         gameManager.spectatorDelegate = self
+        checkNoPlayersView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if gameManager.cleanOldOthersGames() == true {
+            checkNoPlayersView()
             tableView.reloadData()
+        }
+    }
+    
+    func checkNoPlayersView() {
+        if gameManager.othersGames.count == 0 {
+            noPlayersView = Bundle.main.loadNibNamed("NoMatches", owner: self, options: nil)?.first as? UIView
+            tableView.tableHeaderView = noPlayersView
+        } else {
+            noPlayersView = nil
+            tableView.tableHeaderView = nil
         }
     }
 }
@@ -64,6 +77,7 @@ extension MatchesTableViewController {
         if othersGame.lastMoveDate.timeIntervalSinceNow * -1 > Timeout.match {
             //The game is not longer valid and can't be opened.
             if gameManager.cleanOldOthersGames() == true {
+                checkNoPlayersView()
                 tableView.reloadData()
             }
         } else {
@@ -91,6 +105,7 @@ extension MatchesTableViewController {
 
 extension MatchesTableViewController {
     func gameManager(_ gameManager: GameManager, didDetectNewSpectatorGame othersGame: OthersGame) {
+        checkNoPlayersView()
         self.tableView.reloadData()
     }
     
@@ -98,6 +113,7 @@ extension MatchesTableViewController {
         if othersGame.gameId == showingmatchController?.game.gameId {
             showingmatchController?.endGameAndExit()
         }
+        checkNoPlayersView()
         tableView.reloadData()
     }
     

@@ -44,8 +44,7 @@ class AvailablePlayersTableViewController: UITableViewController, GameManagerDel
         if players.count == 0 {
             noPlayersView = Bundle.main.loadNibNamed("EmptyTable", owner: self, options: nil)?.first as? UIView
             tableView.tableHeaderView = noPlayersView
-        } else
-        {
+        } else {
             noPlayersView = nil
             tableView.tableHeaderView = nil
         }
@@ -130,8 +129,8 @@ extension AvailablePlayersTableViewController {
         guard let index = players.index(of: player) else {
             return
         }
-        checkNoPlayersView()
         players.remove(at: index)
+        checkNoPlayersView()
         self.tableView.reloadData()
     }
     func gameManager(_ gameManager: GameManager, didDetectStatusChange status: PlayerStatus, withPlayer player: Player) {

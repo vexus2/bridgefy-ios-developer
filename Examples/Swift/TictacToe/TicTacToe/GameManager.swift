@@ -564,7 +564,7 @@ extension GameManager {
         return _isLocalTurn
     }
     var player1Name: String {
-        return "YOU"
+        return "You"
     }
     var player2Name: String {
         return currentOpponent?.userName ?? ""

@@ -16,7 +16,9 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         startButton.isEnabled = false
+        startButton.backgroundColor = DISABLE_COLOR
         nameTextField.delegate = self
+        nameTextField.becomeFirstResponder()
         addStyle()
     }
     
@@ -43,11 +45,24 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didChangeText(sender: UITextField) {
-        
         startButton?.isEnabled = sender.text != ""
+        startButton.backgroundColor = sender.text != "" ? UIColor.white: DISABLE_COLOR
         
     }
+    
     @IBAction func startApp(sender: UIButton) {
+        // Username validation
+        
+        let myString = nameTextField.text
+        let trimmedString = myString?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if trimmedString == "" {
+            nameTextField.text = ""
+            nameTextField.placeholder = "Enter a valid username"
+            startButton.isEnabled = false
+            startButton.backgroundColor = DISABLE_COLOR
+            return
+        }
         
         UserDefaults.standard.setValue(nameTextField?.text, forKey: StoredValues.username)
         let username: String = nameTextField!.text!
@@ -59,14 +74,13 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func tap(gesture: UITapGestureRecognizer) {
-        nameTextField.resignFirstResponder()
-    }
-    
     // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
+        if textField.text != "" {
+            self.startApp(sender: startButton)
+        }
+        
+        return true
     }
 
 }

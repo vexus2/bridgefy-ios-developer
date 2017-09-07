@@ -14,11 +14,11 @@
             <rect key="frame" x="0.0" y="0.0" width="462" height="125"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no connected players right now :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXp-3I-aiw">
-                    <rect key="frame" x="70" y="32" width="322" height="51"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no current matches" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9i-KO-cYV">
+                    <rect key="frame" x="70" y="37" width="322" height="51"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="51" id="7Qf-C5-l7y"/>
-                        <constraint firstAttribute="width" constant="322" id="T4R-XD-wo6"/>
+                        <constraint firstAttribute="width" constant="322" id="Abd-EW-5Aa"/>
+                        <constraint firstAttribute="height" constant="51" id="l4m-Oe-QLI"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,12 +27,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="XXp-3I-aiw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="7iW-BL-cmp"/>
-                <constraint firstItem="XXp-3I-aiw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kfj-h4-zuE"/>
+                <constraint firstItem="a9i-KO-cYV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SYp-I9-Ifv"/>
+                <constraint firstItem="a9i-KO-cYV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="U2w-Kx-s6w"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="78" y="-217.5"/>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
 </document>
