@@ -301,7 +301,6 @@ private extension GameManager {
     func sendPacket(_ packet:[String: Any], toPlayer player: Player?, withType type: EventType, options:BFSendingOption) {
         
         let packet: [String : Any] = [ event_key: type.rawValue, content_key: packet ]
-        print("Packet to send \(packet)")
         do {
             
             try self.transmitter.send(packet,
@@ -676,7 +675,6 @@ extension GameManager: BFTransmitterDelegate {
                      packetID: String,
                      broadcast: Bool,
                      mesh: Bool) {
-        print("Received packet: \(String(describing: dictionary))")
         processReceivedSpectatorsPacket(dictionary!, fromUser: user)
         guard let player = ( players.filter{ $0.identifier == user}.first ) else {
             return
