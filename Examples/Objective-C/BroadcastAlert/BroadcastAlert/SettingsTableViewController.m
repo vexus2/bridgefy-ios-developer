@@ -56,6 +56,8 @@
         [self showResetSentCounterAlert];
     } else if (indexPath.row == 3) {
         [self showDeleteReceivedAlerts];
+    } else if (indexPath.row == 4) {
+        [self openBridgefyPage];
     }
 }
 
@@ -185,6 +187,10 @@
 
 - (NSString *)cleanText:(NSString *)string {
     return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (void)openBridgefyPage {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://bridgefy.me"]];
 }
 
 @end

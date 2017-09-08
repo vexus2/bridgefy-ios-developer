@@ -154,6 +154,7 @@
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="powered_by_bridgefy" translatesAutoresizingMaskIntoConstraints="NO" id="1ea-YJ-aHW">
                                 <rect key="frame" x="280" y="72" width="85" height="26"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="BhH-E4-qKw"/>
                                     <constraint firstAttribute="height" constant="26" id="cd5-Qb-W4j"/>
@@ -281,20 +282,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="4cO-hT-5aM"/>
-                                <exclude reference="A6k-FX-RVy"/>
-                                <exclude reference="K09-RT-gQs"/>
-                                <exclude reference="Y7I-an-3i5"/>
-                                <exclude reference="euD-wu-8S7"/>
-                                <exclude reference="v2U-BC-Rdf"/>
-                                <exclude reference="3gL-4R-Ot1"/>
-                                <exclude reference="7UB-zk-Nla"/>
-                                <exclude reference="UQA-JK-XNN"/>
-                                <exclude reference="VZt-HQ-0gN"/>
-                                <exclude reference="spj-ER-tcV"/>
-                                <exclude reference="Khl-ug-bVW"/>
-                                <exclude reference="i47-NK-X75"/>
-                                <exclude reference="sCg-nc-RTy"/>
                                 <exclude reference="5M4-HS-dfH"/>
                                 <exclude reference="IRL-aY-Bsl"/>
                                 <exclude reference="RbG-gD-810"/>
@@ -303,36 +290,50 @@
                                 <exclude reference="erS-my-bkR"/>
                                 <exclude reference="qK5-SV-AtK"/>
                                 <exclude reference="qzQ-yl-DXI"/>
+                                <exclude reference="3gL-4R-Ot1"/>
+                                <exclude reference="7UB-zk-Nla"/>
+                                <exclude reference="UQA-JK-XNN"/>
+                                <exclude reference="VZt-HQ-0gN"/>
+                                <exclude reference="spj-ER-tcV"/>
+                                <exclude reference="4cO-hT-5aM"/>
+                                <exclude reference="A6k-FX-RVy"/>
+                                <exclude reference="K09-RT-gQs"/>
+                                <exclude reference="Y7I-an-3i5"/>
+                                <exclude reference="euD-wu-8S7"/>
+                                <exclude reference="v2U-BC-Rdf"/>
+                                <exclude reference="Khl-ug-bVW"/>
+                                <exclude reference="i47-NK-X75"/>
+                                <exclude reference="sCg-nc-RTy"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="4cO-hT-5aM"/>
-                                <exclude reference="euD-wu-8S7"/>
-                                <include reference="v2U-BC-Rdf"/>
-                                <include reference="7UB-zk-Nla"/>
-                                <include reference="UQA-JK-XNN"/>
-                                <include reference="i47-NK-X75"/>
-                                <include reference="sCg-nc-RTy"/>
                                 <include reference="erS-my-bkR"/>
                                 <include reference="qK5-SV-AtK"/>
                                 <include reference="qzQ-yl-DXI"/>
+                                <include reference="7UB-zk-Nla"/>
+                                <include reference="UQA-JK-XNN"/>
+                                <include reference="4cO-hT-5aM"/>
+                                <exclude reference="euD-wu-8S7"/>
+                                <include reference="v2U-BC-Rdf"/>
+                                <include reference="i47-NK-X75"/>
+                                <include reference="sCg-nc-RTy"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="constraints">
-                                <include reference="A6k-FX-RVy"/>
-                                <include reference="K09-RT-gQs"/>
-                                <include reference="Y7I-an-3i5"/>
-                                <exclude reference="3gL-4R-Ot1"/>
-                                <include reference="VZt-HQ-0gN"/>
-                                <include reference="spj-ER-tcV"/>
-                                <include reference="Khl-ug-bVW"/>
                                 <exclude reference="5M4-HS-dfH"/>
                                 <include reference="IRL-aY-Bsl"/>
                                 <include reference="RbG-gD-810"/>
                                 <exclude reference="TtE-F6-cXE"/>
                                 <include reference="bWu-tg-gmF"/>
+                                <exclude reference="3gL-4R-Ot1"/>
+                                <include reference="VZt-HQ-0gN"/>
+                                <include reference="spj-ER-tcV"/>
+                                <include reference="A6k-FX-RVy"/>
+                                <include reference="K09-RT-gQs"/>
+                                <include reference="Y7I-an-3i5"/>
+                                <include reference="Khl-ug-bVW"/>
                             </mask>
                         </variation>
                     </view>
@@ -837,7 +838,7 @@ Visit www.bridgefy.me</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cqN-y8-rdU" id="KNe-gH-KrD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYs-Pg-D9Y">
@@ -859,6 +860,27 @@ Visit www.bridgefy.me</string>
                                                 <constraint firstItem="QYs-Pg-D9Y" firstAttribute="leading" secondItem="KNe-gH-KrD" secondAttribute="leadingMargin" constant="8" id="l8o-hM-0Vo"/>
                                                 <constraint firstItem="dEC-4s-JNz" firstAttribute="leading" secondItem="KNe-gH-KrD" secondAttribute="leadingMargin" constant="15" id="rNC-lO-aEL"/>
                                                 <constraint firstItem="dEC-4s-JNz" firstAttribute="top" secondItem="QYs-Pg-D9Y" secondAttribute="bottom" constant="8" id="siw-J7-3A2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="U42-pr-afD">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U42-pr-afD" id="RFC-gS-xC5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn more about Bridgefy SDK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVO-TA-g6E">
+                                                    <rect key="frame" x="16" y="21.5" width="343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aVO-TA-g6E" firstAttribute="centerY" secondItem="RFC-gS-xC5" secondAttribute="centerY" id="YgO-zK-TIa"/>
+                                                <constraint firstItem="aVO-TA-g6E" firstAttribute="trailing" secondItem="RFC-gS-xC5" secondAttribute="trailingMargin" constant="-8" id="b0f-Ws-H0w"/>
+                                                <constraint firstItem="aVO-TA-g6E" firstAttribute="leading" secondItem="RFC-gS-xC5" secondAttribute="leadingMargin" constant="8" id="nfN-2r-jYs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

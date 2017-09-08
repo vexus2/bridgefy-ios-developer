@@ -41,6 +41,8 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             self.showTextAlert()
+        } else if indexPath.row == 1 {
+            self.openBridgefyPage()
         }
     }
     
@@ -105,6 +107,16 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     
     func cleanText(string: String) -> String {
         return string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
+    
+    func openBridgefyPage() {
+        if let url = URL(string: "https://bridgefy.me") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:])
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
 
 }
