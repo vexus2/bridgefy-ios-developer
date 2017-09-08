@@ -50,7 +50,7 @@ class MatchViewController: UIViewController, TTTBoardViewDataSource, TTTBoardVie
         leaveButton.layer.cornerRadius = 3.0
         continueButton.layer.cornerRadius = 6.0
         continueButton.layer.borderColor = leaveButton.backgroundColor?.cgColor
-        continueButton.layer.borderWidth = 3.0
+        continueButton.layer.borderWidth = 1.5
         player1Container.layer.borderColor = UIColor.lightGray.cgColor
         player1Container.layer.borderWidth = 1.0
         player1Container.layer.cornerRadius = 3.0
@@ -73,67 +73,6 @@ class MatchViewController: UIViewController, TTTBoardViewDataSource, TTTBoardVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.view.setNeedsUpdateConstraints()
-    }
-    
-    override func updateViewConstraints() {
-        // All this method is just constraint management
-        // doesn't really matter for the main purpose of the app
-        super.updateViewConstraints()
-        if landscapeContraints.count == 0 {
-            
-            let views = ["scores": scoresContainer,
-                         "board": boardView,
-                         "buttons": buttonsContainer,
-                         "logo": logoImageView] as! [String: UIView]
-            
-            // Creating scores container contraints
-            self.landscapeContraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[scores]",
-                                                                                  options: [],
-                                                                                  metrics: nil,
-                                                                                  views: views)
-            
-            self.landscapeContraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-45-[scores]",
-                                                                                options: [],
-                                                                                metrics: nil,
-                                                                                views: views)
-            
-            // Creating board container contraints
-            self.landscapeContraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[scores]-100-[board]",
-                                                                       options: [],
-                                                                       metrics: nil,
-                                                                       views: views)
-            
-            self.landscapeContraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-37-[board]",
-                                                                       options: [],
-                                                                       metrics: nil,
-                                                                       views: views)
-            
-            // Creating buttons container contraints
-            self.landscapeContraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[buttons]",
-                                                                       options: [],
-                                                                       metrics: nil,
-                                                                       views: views)
-            
-            self.landscapeContraints += NSLayoutConstraint.constraints(withVisualFormat: "V:[scores]-30-[buttons]",
-                                                                       options: [],
-                                                                       metrics: nil,
-                                                                       views: views)
-            
-        }
-        
-        self.view.removeConstraints(portraitContraints)
-        self.view.removeConstraints(landscapeContraints)
-
-        if UIDevice.current.orientation.isPortrait || UIDevice.current.orientation.isFlat {
-            self.view.addConstraints(portraitContraints)
-        } else {
-            self.view.addConstraints(landscapeContraints)
-        }
-
     }
     
     // MARK: - Board state update methods
