@@ -126,6 +126,7 @@
 				511E82861D499DCF006B1230 /* Frameworks */,
 				511E82871D499DCF006B1230 /* Resources */,
 				511E82A71D499EC1006B1230 /* Embed Frameworks */,
+				3E71D8E51F637149002B2A1F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -182,6 +183,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E71D8E51F637149002B2A1F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n\nDESTINATION=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nFRAMEWORK_NAME=\"BFTransmitter\"\nFRAMEWORK_PATH=\"${DESTINATION}/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}\"\n\nlipo -remove i386 \"$FRAMEWORK_PATH\" -output \"$FRAMEWORK_PATH\"\nlipo -remove x86_64 \"$FRAMEWORK_PATH\" -output \"$FRAMEWORK_PATH\"\necho \"Fat library stripped: ${FRAMEWORK_PATH}\"\n\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		511E82851D499DCF006B1230 /* Sources */ = {
@@ -323,6 +340,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -344,6 +362,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

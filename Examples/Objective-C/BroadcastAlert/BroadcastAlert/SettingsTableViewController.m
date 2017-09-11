@@ -103,7 +103,7 @@
                                                                              message:nil
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[NSNotificationCenter defaultCenter] postNotificationName:RESET_SENT_ALERTS_NOTIFICATION
                                                             object:nil];
         [self clearTableSelection];
@@ -113,11 +113,11 @@
         [self clearTableSelection];
     }];
     
-    [alertController addAction:yesAction];
+    [alertController addAction:okAction];
     [alertController addAction:cancelAction];
     
     [self presentViewController:alertController
-                       animated:yesAction
+                       animated:YES
                      completion:nil];
 }
 
@@ -127,7 +127,7 @@
                                                                              message:nil
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DELETE_RECEIVED_ALERTS_NOTIFICATION
                                                             object:nil];
         [self clearTableSelection];
@@ -137,11 +137,11 @@
         [self clearTableSelection];
     }];
     
-    [alertController addAction:yesAction];
+    [alertController addAction:okAction];
     [alertController addAction:cancelAction];
     
     [self presentViewController:alertController
-                       animated:yesAction
+                       animated:YES
                      completion:nil];
 }
 
