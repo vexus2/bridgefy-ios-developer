@@ -68,14 +68,14 @@
 
 /* Begin PBXFileReference section */
 		3E620CE41F61BE3100491E18 /* NoMatches.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoMatches.xib; sourceTree = "<group>"; };
-		3E620CE81F61CE2500491E18 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ../SettingsTableViewController.swift; sourceTree = "<group>"; };
+		3E620CE81F61CE2500491E18 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		510AF8431ED3ABBD008BB6D4 /* AvailablePlayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailablePlayersTableViewController.swift; sourceTree = "<group>"; };
 		510AF8451ED3ABD1008BB6D4 /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		510AF8471ED3ABE7008BB6D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		510AF8491ED3ABF8008BB6D4 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		5114344A1F03160F00C05163 /* TicTacToeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicTacToeTabBarController.swift; sourceTree = "<group>"; };
 		5114344C1F031A9E00C05163 /* MatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
-		5123DA831ED64BBA00953C7E /* TicTacToe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicTacToe-Bridging-Header.h"; sourceTree = "<group>"; };
+		5123DA831ED64BBA00953C7E /* TicTacToe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TicTacToe-Bridging-Header.h"; path = "TicTacToe/TicTacToe-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		51309F301F0570AC004C6732 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		514E24261F05D4590019B134 /* OthersGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OthersGame.swift; sourceTree = "<group>"; };
 		5157A0181EB92C0D00D5A623 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				51B9BE9A1EDC998500B8839C /* BFTransmitter.framework */,
-				5123DA831ED64BBA00953C7E /* TicTacToe-Bridging-Header.h */,
 				5157A01A1EB92C0D00D5A623 /* TicTacToe */,
 				5157A02F1EB92C0D00D5A623 /* TicTacToeTests */,
 				5157A03A1EB92C0D00D5A623 /* TicTacToeUITests */,
@@ -154,6 +153,7 @@
 		5157A01A1EB92C0D00D5A623 /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				5123DA831ED64BBA00953C7E /* TicTacToe-Bridging-Header.h */,
 				515BEE291F0C0C1F000C05EA /* Entities */,
 				515BEE281F0C0C01000C05EA /* Table cells */,
 				515BEE271F0C0BEE000C05EA /* Controllers */,

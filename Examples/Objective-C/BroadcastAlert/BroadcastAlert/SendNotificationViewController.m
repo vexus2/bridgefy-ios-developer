@@ -38,7 +38,7 @@
     [super viewDidLoad];
     
     //Transmitter initialization
-    self.transmitter = [[BFTransmitter alloc] initWithApiKey:@"68898033-3dce-4c80-843e-e10982b942ac"];
+    self.transmitter = [[BFTransmitter alloc] initWithApiKey:@"YOUR_API_KEY"];
     self.transmitter.delegate = self;
     [self.transmitter start];
     
