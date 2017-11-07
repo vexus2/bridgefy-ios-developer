@@ -80,7 +80,7 @@ NSString* const broadcastConversation = @"broadcast";
     message.date = [NSDate date];
     message.received = NO;
     message.broadcast = self.broadcastType;
-
+    
     if (self.broadcastType) {
         [self.chatDelegate sendMessage:message
                         toConversation:broadcastConversation];
@@ -90,7 +90,7 @@ NSString* const broadcastConversation = @"broadcast";
         [self.chatDelegate sendMessage:message
                         toConversation:self.userUUID];
     }
-
+    
     self.textField.text = @"";
     [self.messages insertObject:message atIndex:0];
     [self addRowToTable];
@@ -111,16 +111,16 @@ NSString* const broadcastConversation = @"broadcast";
 }
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-
+    
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
-
+    
     UILabel* userLabel = [(UILabel*)cell.contentView viewWithTag:1000];
     UILabel* messageLabel = [(UILabel*)cell.contentView viewWithTag:1001];
     UILabel* dateLabel = [(UILabel*)cell.contentView viewWithTag:1002];
     UILabel* transmissionLabel = [(UILabel*)cell.contentView viewWithTag:1003];
     UIImageView* deviceTypeImageView = [(UIImageView*)cell.contentView viewWithTag:1004];
     Message* message = [self.messages objectAtIndex:indexPath.item];
-
+    
     if (message.received) {
         userLabel.textColor = [UIColor redColor];
         userLabel.text = message.sender;
@@ -149,7 +149,7 @@ NSString* const broadcastConversation = @"broadcast";
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm:ss"];
     dateLabel.text = [dateFormatter stringFromDate:message.date];
-
+    
     return cell;
 }
 
@@ -163,12 +163,12 @@ NSString* const broadcastConversation = @"broadcast";
 #pragma mark - Keyboard management
 - (void)keyboardShown:(NSNotification*)notification
 {
-
+    
     NSDictionary* keyboardInfo = [notification userInfo];
     NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
     CGRect frame = [keyboardFrameBegin CGRectValue];
-
-    self.keyboardConstraint.constant = frame.size.height;
+    
+    self.keyboardConstraint.constant = frame.size.height + 50.0; // チャット送信窓が予測変換枠で隠れてしまうので固定値で高さ調整
     [UIView animateWithDuration:.5f animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -182,3 +182,4 @@ NSString* const broadcastConversation = @"broadcast";
 }
 
 @end
+
