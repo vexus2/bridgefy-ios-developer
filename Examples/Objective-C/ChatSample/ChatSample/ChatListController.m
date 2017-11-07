@@ -243,6 +243,7 @@ NSString * const peerTypeKey = @"device_type";
 - (void)transmitter:(BFTransmitter *)transmitter didReachDestinationForPacket:( NSString *)packetID
 {
     //Mesh packet reached destiny (no always invoked)
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 - (void)transmitter:(BFTransmitter *)transmitter meshDidStartProcessForPacket:( NSString *)packetID
@@ -252,11 +253,13 @@ NSString * const peerTypeKey = @"device_type";
 - (void)transmitter:(BFTransmitter *)transmitter didSendDirectPacket:(NSString *)packetID
 {
     //A direct message was sent
+    AudioServicesPlaySystemSound(1519);
 }
 
 - (void)transmitter:(BFTransmitter *)transmitter didFailForPacket:(NSString *)packetID error:(NSError * _Nullable)error
 {
     //A direct message transmission failed.
+    AudioServicesPlaySystemSound(1520);
 }
 - (void)transmitter:(BFTransmitter *)transmitter meshDidDiscardPackets:(NSArray<NSString *> *)packetIDs
 {
@@ -287,7 +290,7 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
     } else {
         //If it doesn't contain the key messageTextKey it's the device name of the other user.
         [self processReceivedPeerInfo:dictionary
-                              fromUser:user];
+                             fromUser:user];
     }
     
 }
@@ -368,7 +371,7 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
     // In case the other user don't have our devicename,
     // this is sent as an initial message.
     [self sendDeviceNameToUser:user];
-
+    
 }
 
 - (void)sendDeviceNameToUser:(NSString *)user {
@@ -377,7 +380,7 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
                                  peerTypeKey: @(DeviceTypeIos)
                                  };
     NSError *error;
-    BFSendingOption options = (BFSendingOptionDirectTransmission | BFSendingOptionEncrypted);
+    BFSendingOption options = (BFSendingOptionEncrypted | BFSendingOptionFullTransmission);
     
     [self.transmitter sendDictionary:dictionary
                               toUser:user
@@ -402,6 +405,7 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
     message.mesh =  mesh;
     message.broadcast = broadcast;// If YES, received message is broadcast.
     NSString * conversation;
+    AudioServicesPlaySystemSound(1521);
     if (message.broadcast)
     {
         conversation = broadcastConversation;
@@ -422,12 +426,12 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
     
     // YES if the related conversation for the user is shown
     BOOL showingSameUser = !message.broadcast &&
-                            self.chatController &&
-                            [self.chatController.userUUID isEqualToString:user];
+    self.chatController &&
+    [self.chatController.userUUID isEqualToString:user];
     // YES if received message is for broadcast and broadcast is shown
     BOOL showingBroadcast = message.broadcast &&
-                            self.chatController != nil &&
-                            self.chatController.broadcastType;
+    self.chatController != nil &&
+    self.chatController.broadcastType;
     
     if (showingBroadcast || showingSameUser)
     {
@@ -492,7 +496,7 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
     
     NSMutableArray *messages;
     if (data) {
-         messages = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        messages = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     }
     
     if (messages == nil)
@@ -528,3 +532,4 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
 }
 
 @end
+
